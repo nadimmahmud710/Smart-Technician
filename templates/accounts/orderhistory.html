@@ -1,0 +1,65 @@
+
+{% extends "base.html" %}
+{% block 'content' %}
+
+
+
+  <div class="card-body">
+
+
+    {% for friend in all_accept %}
+    {% if user.id == friend.from_user_a.id %}
+      <div class="card"style="width: 70rem; height: 20rem;margin: 0 auto; background-color:#699675",>
+
+      <div class="card-body">
+      <h5 class="text-muted">Date: {{ friend.date_posted }}</h5>
+    <h5 class="text-warning">{{friend.post_Id_a}}</h5>
+
+   <h5>Order Id #{{friend.id}} <br> Technician:    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'userprofile' friend.to_user_a.id %}">{{friend.to_user_a}}</a>.Contact with him and please give response after finish the work</h5>
+
+   <div class="btn-group dropup">
+     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Review
+     </button>
+        <a class="dropdown-item" href="{% url 'like' friend.post_Id_a.id friend.to_user_a.id 1 %}">1</a>
+        <a class="dropdown-item" href="{% url 'like' friend.post_Id_a.id friend.to_user_a.id 2 %}">2</a>
+        <a class="dropdown-item" href="{% url 'like' friend.post_Id_a.id friend.to_user_a.id 3 %}">3</a>
+        <a class="dropdown-item" href="{% url 'like' friend.post_Id_a.id friend.to_user_a.id 4 %}">4</a>
+        <a class="dropdown-item" href="{% url 'like' friend.post_Id_a.id friend.to_user_a.id 5 %}">5</a>
+
+
+     </div>
+   </div>
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </div>
+    </div>
+    {% endif %}
+
+    {% if user.id == friend.to_user_a.id %}
+    <div class="card"style="width: 70rem; margin: 0 auto; height: 20rem; background-color:#699675",>
+
+    <div class="card-body">
+      <h5 class="text-muted">Date: {{ friend.date_posted }}</h5>
+    <h5 class="text-warning">{{friend.post_Id_a}}</h5>
+
+   <h5>Order Id #{{friend.id}}   <br>    <a class="text-light bg-dark" href="{% url 'userprofile' friend.from_user_a.id %}"> Profile {{friend.from_user_a}}</a>.Contact with him and please give response after finish the work</h5>
+
+
+    </div>
+    </div>
+    {% endif %}
+
+
+
+
+
+    {% endfor %}
+  </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block 'content' %}
+
+
+
+  <div class="card"style="width: 40rem;">
+      <div class="card-body">
+        <a class="mr-2" href="{% url 'userprofile' post.author.id %}">{{ object.author }}</a>
+        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+        {% if object.author == user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+          </div>
+          {% endif %}
+
+      <h5 class="article-title">{{ object.title }}</h5>
+      <p class="article-content">{{ object.problem_content }}</p>
+
+
+      <div>
+
+           {% if user.is_employee %}
+
+        <h5>request Job as &nbsp; {{user}}<h5>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'send_friend_request' object.author_id object.id %}"> Bid Job</a>
+
+          {% endif %}
+
+    </div>
+
+
+      </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% block 'content' %}
+
+{% for post in posts %}
+
+
+
+{% if post.job_field == user.employee.job_field %}
+
+
+  <div class="card-body">
+
+      <div class="card"style="width: 60rem; height: 15rem; background-color:#8c7b4d;margin: 0 auto;",>
+
+      <div class="card-body">
+        <h5>{{ post.date_posted }}</h5>
+        <h5><a class="text-light bg-dark" href="{% url 'post-detail' post.id %}">{{post.title}}</a></h5>
+
+    <h5><a class="text-light bg-dark" href="{% url 'userprofile' post.author.id %}">{{post.author}}</a> Posted a new job </h5>
+    </div>
+    </div>
+
+  </div>
+
+{% endif %}
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+
+{% block 'content' %}
+
+
+
+
+<div class="container-fluid"style="width: 40rem;>
+
+  <div class="row">
+
+		  <h1 class="text-center">Profile</h1>
+		  <hr>
+		  <table class="table table table-dark">
+        <tr>
+  			  <td>Username</td>
+  			  <td>{{ user1.username }}</td>
+
+  			</tr>
+
+			 <tr>
+			  <td>First Name</td>
+			  <td>{{ user1.first_name }}</td>
+			   </tr>
+			<tr>
+			  <td>Last Name</td>
+			  <td>{{ user1.last_name }}</td>
+			</tr>
+			{% if user1.is_customer %}
+			<tr>
+			  <td>Phone Number</td>
+			  <td>{{user1.customer.phone_number }}</td>
+			</tr>
+
+			<tr>
+			  <td>House no</td>
+			  <td>{{user1.customer.house }}</td>
+			</tr>
+
+			<tr>
+			  <td>Flat</td>
+			  <td>{{user1.customer.flat }}</td>
+			</tr>
+			<tr>
+			  <td>Location</td>
+			  <td>{{user1.customer.location }}</td>
+			</tr>
+
+			{% else %}
+			<tr>
+			  <td>workplace</td>
+			  <td>{{user1.employee.workplace }}</td>
+			</tr>
+			<tr>
+			  <td>Selected jobField</td>
+			  <td>{{user1.employee.job_field }}</td>
+			</tr>
+
+			<tr>
+			  <td>Phone Number</td>
+			  <td>{{user1.employee.phone_number }}</td>
+			</tr>
+      <tr>
+			  <td>Phone Number</td>
+			  <td><a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'review' user1.id %}" class="">Check review</a></td>
+			</tr>
+
+
+
+			{% endif %}
+
+		  </table>
+		</div>
+    </div>
+
+
+{% endblock %}

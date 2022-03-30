@@ -1,0 +1,106 @@
+{% load static %}
+{% load bootstrap_icons %}
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title> Smart Technician </title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% load static %}
+  <link rel="stylesheet" href="  {% static 'index.css' %}" />
+	{% load static %}
+
+
+</head>
+<body>
+	<div class="container_full">
+		<div class="fix header_bg">
+			<header id="header">
+				<div class="text-center mt-3">
+					{% if user.is_authenticated %}
+					<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+					  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+				 </svg>
+					<a href="{% url 'profile' %}" class="btn btn-danger btn-sm mt-1 mb-1">{{ user.first_name }}'s Account </a>
+					<a href="{% url 'logout' %}" class="btn btn-danger btn-sm mt-1 mb-1">Logout</a>
+
+						{% endif %}
+
+		    </div>
+
+				<div class="logo_left">
+					<h1 style ="color:#dba10f;"> SmarT Technician </h1>
+					<a href="{% url 'contact' %}" style ="margin-left:100px; margin-bottom:10px;" class="btn btn-sm btn-success">ConTact</a>
+					<a href="{% url 'about' %}" style ="margin-bottom:10px;"class="btn btn-sm btn-success">About Us</a>
+					{% block head %}
+					{% endblock %}
+				</div>
+
+				<nav class="menu">
+					<div class="btn-group btn-group-justified">
+
+						{% if user.is_customer %}
+
+
+					  <a class="btn btn-sm btn-light" href="{% url 'post-create' %}">Post Job</a>
+						<a class="btn btn-sm btn-secondary" href="{% url 'blog-home' %}">Jobs</a>
+
+						{% load bootstrap_icons %}
+							<i class="bi bi-person-circle"></i>
+							{% load bootstrap_icons %}
+
+						{% elif user.is_employee %}
+
+
+						 <a class="btn btn-sm btn-secondary" href="{% url 'blog-home' %}">Jobs</a>
+
+						 <i class="bi bi-person-circle"></i>
+
+						 {% else %}
+						 <a href="{% url 'register' %}" class="btn btn-sm btn-success">Signup</a>
+						 <a href="{% url 'login' %}" class="btn btn-sm btn-primary">login</a>
+						 <a href="{% url 'admin:index' %}" class="btn btn-sm btn-success">Admin login</a>
+
+
+						{% endif %}
+
+
+					</div>
+
+				</nav>
+			</header>
+		</div>
+	</div>
+
+	<div class="row justify-content-center">
+		{% block 'content' %}
+		{% endblock %}
+	</div>
+	<div class="W">
+	    <div class="slider-wrapper theme-default">
+            <div id="slider" class="nivoSlider">
+                <img src="static/ph5.jpg" data-thumb="static/ph5.jpg" class="mr-2 "alt="" />
+
+            </div>
+
+        </div>
+	</div>
+
+	<div class="container_fulldiv2">
+    <div class="fix container2">
+  		 <div class="demo">
+    		 <h2>Contact</h2>
+    		 <p>Lorem ipsum dolor sit
+         </p>
+  		 </div>
+
+    </div>
+	</div>
+
+
+
+
+
+</body>
+</html>

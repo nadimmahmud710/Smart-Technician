@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block 'content' %}
+
+{% for post in posts %}
+{% if user.id == post.author_id %}
+  <div class="card"style="width: 30rem;">
+      <div class="card-body">
+        <a class="mr-2" href="#">{{ post.author }}</a>
+        <small class="text-muted">{{ post.date_posted }}</small>
+
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Update</a>
+          </div>
+
+
+      <h5 class="article-title">{{ post.title }}</h5>
+      <p class="article-content">{{ post.problem_content }}</p>
+
+
+      <div>
+
+
+
+
+
+
+
+    </div>
+
+
+      </div>
+
+</div>
+
+{% endif %}
+{% endfor %}
+{% endblock %}

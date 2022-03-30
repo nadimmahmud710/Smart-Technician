@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+{% block 'content' %}
+
+
+
+<h2>Technicians profile</h2>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+  <div class="card"style="width: 80rem; background-color:#e8bb41">
+
+  <div class="card-body">
+
+
+    {% for friend_request in allrequest %}
+      {% if user.id == friend_request.to_user.id %}
+
+      <div class="card"style="width: 60rem; height: 15rem; background-color:#8c7b4d",>
+
+      <div class="card-body" id="btn">
+            <h5 class="text-warning">{{friend_request.date_posted}}</h5>
+        <h5 class="text-warning">{{friend_request.post_Id}}</h5>
+    <h5><a class="text-light bg-dark" href="{% url 'userprofile' friend_request.from_user.id %}">{{friend_request.from_user}}</a> sent you a request <a class="btn btn-success" id="btnSubmit" href="{% url 'accept_friend_request' friend_request.from_user.id friend_request.post_Id.id %}">accept</a><h5>
+
+    </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  </div>
+
+
+
+{% endblock %}

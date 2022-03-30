@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<div style="margin-left: 20px;">
+
+<h5>Sort by:<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'date_posted' %}">Date</a>
+<div class="btn-group dropup">
+  <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Search field
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'jobField' %}">Ac mechanics</a>
+    <a class="dropdown-item" href="{% url 'jobField2' %}">electrician</a>
+    <a class="dropdown-item" href="{% url 'jobField3' %}">Tv mechanics</a>
+
+    <!-- Dropdown menu links -->
+  </div>
+</div>
+</h5>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+{% endblock %}
+
+{% block 'content' %}
+
+    {% for post in posts %}
+
+     {% if post.job_field == "AC mechanics" %}
+     <div>
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+          <div class="media-body">
+
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'userprofile' post.author.id %}">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+              <div class="card" style="width: 15rem; height:25rem;">
+
+                <div class="card-body">
+                  <h5><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
+                  <p class="article-content">{{ post.problem_content }}</p>
+
+                </div>
+              </div>
+
+
+          </div>
+
+        </article>
+
+        </div>
+         {% endif %}
+
+
+
+    {% endfor %}
+{% endblock %}

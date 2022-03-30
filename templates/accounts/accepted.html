@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+{% block 'content' %}
+
+
+
+<h2>view accepted requests</h2>
+
+
+
+
+  <div class="card-body">
+
+
+    {% for friend in all_accept %}
+      {% if user.id == friend.to_user_a.id %}
+
+      <div class="card"style="width: 60rem; margin: 0 auto; height: 15rem; background-color:#8c7b4d",>
+
+      <div class="card-body">
+        <h5>{{ friend.date_posted }}</h5>
+        <h5 class="text-warning">{{friend.post_Id_a}}</h5>
+    <h5><a class="text-light bg-dark" href="{% url 'userprofile' friend.from_user_a.id %}">{{friend.from_user_a}}</a> accepted your request </h5>
+    </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+
+
+
+{% endblock %}

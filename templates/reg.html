@@ -1,0 +1,62 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hostel management</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container"><br><br>
+
+  	<h1 class="text-center">Registration Form</h1><br>
+
+  	<form method="post" action="registration.php">
+  		<fieldset class="form-group">
+
+  			<div class="form-group">
+  				<label class="form-control-label">phone number:</label>
+  				<input class="form-control" type="number" name="phone" placeholder="Write your phone number" required>
+  			</div>
+        <div class="form-group">
+  				<label class="form-control-label">Password:</label>
+  				<input class="form-control" type="password" name="password" placeholder="Enter password" required>
+  			</div>
+
+
+  			<div class="form-group">
+  				<label class="form-control-label">Email:</label>
+  				<input class="form-control" type="email" name="email" placeholder="Email" required>
+  			</div>
+  			<div class="form-group">
+  				<label class="form-control-label">Name:</label>
+  				<input class="form-control" type="text" name="name" placeholder="write your full name" required>
+  			</div>
+			<br>
+
+			<div class="radio">
+              <label><input type="radio" name="optradio" checked>      technician</label>
+              </div>
+			  <br>
+              <div class="radio">
+               <label><input type="radio" name="optradio">      user</label>
+</div>
+
+  		</fieldset>
+
+
+
+
+        <br>
+        <button class="btn btn-primary btn-block btn-lg" name="submit">Submit AS a Tecnician</button>
+		<button class="btn btn-primary btn-block btn-lg" name="submit">Submit AS a User </button>
+
+
+
+	</div>
+
+
+</body>
+</html>

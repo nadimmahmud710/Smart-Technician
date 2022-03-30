@@ -1,0 +1,99 @@
+
+
+{% extends "base.html" %}
+
+
+{% block 'content' %}
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-4" style="background-color:#cef0e6;">
+
+      {% if user.is_customer %}
+
+      <a style ="margin-left:20px;" href="{% url 'bid_request' %}" class="btn btn-sm btn-success">Bid Requests</a>
+
+      <a href="{% url 'order_history' %}" class="btn btn-sm btn-primary">Orders history</a>
+
+       <a class="btn btn-sm btn-success" href="{% url 'mypost' %}">My posts</a>
+       {% else %}
+       <a href="{% url 'accept_request' %}" class="btn btn-sm btn-success">Accepted Job Requests</a>
+
+       <a href="{% url 'order_history' %}" class="btn btn-sm btn-primary">Orders</a>
+
+        <a class="btn btn-sm btn-success" href="{% url 'notification' %}">Post Notifications</a>
+
+        {% endif %}
+
+    </div>
+    <div class="col-sm-8" style="background-color:#70917b;">
+       <div class="col-md-10 ">
+		  <h1 class="text-center">Profile</h1>
+		  <hr>
+		  <table class="table">
+        <tr>
+  			  <td>Username</td>
+  			  <td>{{ user.username }}</td>
+  			</tr>
+
+			 <tr>
+			  <td>First Name</td>
+			  <td>{{ user.first_name }}</td>
+			   </tr>
+			<tr>
+			  <td>Last Name</td>
+			  <td>{{ user.last_name }}</td>
+			</tr>
+				{% if user.is_customer %}
+			<tr>
+			  <td>Phone Number</td>
+			  <td>{{user.customer.phone_number }}</td>
+			</tr>
+
+			<tr>
+			  <td>House no</td>
+			  <td>{{user.customer.house }}</td>
+			</tr>
+
+			<tr>
+			  <td>Flat</td>
+			  <td>{{user.customer.flat }}</td>
+			</tr>
+			<tr>
+			  <td>Location</td>
+			  <td>{{user.customer.location }}</td>
+			</tr>
+
+			{% else %}
+			<tr>
+			  <td>workplace</td>
+			  <td>{{user.employee.workplace }}</td>
+			</tr>
+			<tr>
+			  <td>Selected jobField</td>
+			  <td>{{user.employee.job_field }}</td>
+			</tr>
+
+			<tr>
+			  <td>Phone Number</td>
+			  <td>{{user.employee.phone_number }}</td>
+			</tr>
+
+
+      <tr>
+        <td>Phone Number</td>
+        <td><a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'review' user.id %}" class="">Check review</a></td>
+      </tr>
+
+			{% endif %}
+
+
+
+
+		  </table>
+
+		</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
